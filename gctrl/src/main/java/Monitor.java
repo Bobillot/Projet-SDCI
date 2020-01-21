@@ -100,7 +100,7 @@ class Monitor {
         ).start();
     }
 
-    private int get_data() {
+    private double get_data() {
         //Call Sensors
         // TODO - Done : Getting average latency over 100 pings from vnf:monitor to GI
         String result ="";  
@@ -122,7 +122,7 @@ class Monitor {
             catch (IOException e) {
                 e.printStackTrace();
             }
-          return Integer.parseInt(result);
+          return Float.parseFloat(result);
     }
 
     private double get_fake_data() {
