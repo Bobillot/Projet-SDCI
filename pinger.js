@@ -22,7 +22,7 @@ app.get('/latency', function(req, res)
     }
     var d = new Date();
     var end = d.getTime();
-    lat=end-start
+    lat=(end-start)/100;
     resObj = [lat];
     res.send(resObj);
 });
