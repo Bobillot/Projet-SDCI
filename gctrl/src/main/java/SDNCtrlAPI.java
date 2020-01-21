@@ -11,10 +11,10 @@ import java.net.HttpURLConnection;
  * @project gctrl
  */
 class SDNCtrlAPI {
-
-    String redirect_traffic() {
+    //redirecting traffic from GFx (ip=srcip) to GI (ip=10.0.0.201). the traffic now goes to lb (ip=10.0.0.206)
+    String redirect_traffic(String srcip) {
         String status = "OK";
-        Main.logger(this.getClass().getSimpleName(), "olddestip = 10.0.0.201 ; newdestip = 10.0.0.206");
+        Main.logger(this.getClass().getSimpleName(), "olddestip = 10.0.0.201 ; newdestip = 10.0.0.206 ; srcip = "+srcip);
         //TODO - DONE
         try 
         {
@@ -23,7 +23,7 @@ class SDNCtrlAPI {
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
-            String input = "{\"dpid\":1,\"match\": {\"ipv4_dest\":\"10.0.0.201\",\"eth_type\": 2048},\"actions:[{\"type\":\"SET_NW_DST\",\"nw_dst\":\"10.0.0.206\"}]}" ;
+            String input = "{\"dpid\":1,\"match\": {\"ipv4_dest\":\"10.0.0.201\",\"ipv4_src\":\""+srcip+"\",\"eth_type\": 2048,\"eth_type\": 2048,},\"actions:[{\"type\":\"SET_NW_DST\",\"nw_dst\":\"10.0.0.206\"}]}" ;
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
             os.flush();
