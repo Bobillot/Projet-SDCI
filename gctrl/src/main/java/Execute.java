@@ -48,12 +48,22 @@ class Execute {
                         status = manoapi.deploy_gw();
                         Main.logger(this.getClass().getSimpleName(), status);
                         break;
-                    case "UC4":   // redirect traffic : everything that was going to GI from GF1-2-3 goes to LB
-                        Main.logger(this.getClass().getSimpleName(), "Redirecting Traffic to LB");
-                        status = sdnctlrapi.redirect_traffic();
+                    case "UC4":   // redirect traffic : everything that was going to GI from GF1 goes to LB
+                        Main.logger(this.getClass().getSimpleName(), "Redirecting Traffic from GF1 to LB");
+                        status = sdnctlrapi.redirect_traffic("10.0.0.202");
                         Main.logger(this.getClass().getSimpleName(), status);
                         break;
-                    case "UC5":   // redirect traffic : everything that was coming from Virtual_GI pretends to come from GI
+                    case "UC5":   // redirect traffic : everything that was going to GI from GF2 goes to LB
+                        Main.logger(this.getClass().getSimpleName(), "Redirecting Traffic from GF2 to LB");
+                        status = sdnctlrapi.redirect_traffic("10.0.0.203");
+                        Main.logger(this.getClass().getSimpleName(), status);
+                        break;
+                    case "UC6":   // redirect traffic : everything that was going to GI from GF3 goes to LB
+                        Main.logger(this.getClass().getSimpleName(), "Redirecting Traffic from GF3 to LB");
+                        status = sdnctlrapi.redirect_traffic("10.0.0.204");
+                        Main.logger(this.getClass().getSimpleName(), status);
+                        break;
+                    case "UC7":   // redirect traffic : everything that was coming from Virtual_GI pretends to come from GI
                         Main.logger(this.getClass().getSimpleName(), "Virtual GI pretends to be GI");
                         status = sdnctlrapi.virtualGI_pretends_GI();
                         Main.logger(this.getClass().getSimpleName(), status);
