@@ -48,7 +48,7 @@ class Execute {
                         status = manoapi.deploy_gw();
                         Main.logger(this.getClass().getSimpleName(), status);
                         break;
-                    case "UC4":   // redirect traffic : everything that was going to GI goes to LB
+                    case "UC4":   // redirect traffic : everything that was going to GI from GF1-2-3 goes to LB
                         Main.logger(this.getClass().getSimpleName(), "Redirecting Traffic to LB");
                         status = sdnctlrapi.redirect_traffic();
                         Main.logger(this.getClass().getSimpleName(), status);
