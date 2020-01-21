@@ -12,7 +12,7 @@ var request = require('request');
 var LOCAL_ENDPOINT = {IP : "10.0.0.212", PORT : 9012, NAME : "dev12(stressed)"};
 var REMOTE_ENDPOINT = {IP : "10.0.0.202", PORT : 8282, NAME : "gf1"};
 
-var DATA_PERIOD = 300; //10 times faster than a normal device
+var DATA_PERIOD = 30; //100 times faster than a normal device
 
 function doPOST(uri, body, onResponse) {
     request({method: 'POST', uri: uri, json : body}, onResponse); 
