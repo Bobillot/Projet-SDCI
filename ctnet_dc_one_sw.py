@@ -53,10 +53,10 @@ def create_topology():
 
     dc1 = net.addDatacenter("dc1")
     # add OpenStack-like APIs to the emulated DC
-    api1 = OpenstackApiEndpoint("0.0.0.0", 6001)
+    '''api1 = OpenstackApiEndpoint("0.0.0.0", 6001)
     api1.connect_datacenter(dc1)
     api1.start()
-    api1.connect_dc_network(net)
+    api1.connect_dc_network(net)'''
     # add the command line interface endpoint to the emulated DC (REST API)
     rapi1 = RestApiEndpoint("0.0.0.0", 5001)
     rapi1.connectDCNetwork(net)
