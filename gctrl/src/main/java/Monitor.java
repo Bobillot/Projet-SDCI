@@ -122,7 +122,7 @@ class Monitor {
             catch (IOException e) {
                 e.printStackTrace();
             }
-          return Float.parseFloat(result);
+          return Float.parseFloat(result)/100;  //because our monitor measure the latency over 100 pings
     }
 
     private double get_fake_data() {
