@@ -86,7 +86,9 @@ def create_topology():
     net.ping([Serv, GI])
 
     Serv.cmd("sh ./server.sh")
+    sleep(5)
     GI.cmd("sh ./gi.sh")
+    sleep(5)
     GF1.cmd("sh ./gf1.sh")
     GF2.cmd("sh ./gf2.sh")
     GF3.cmd("sh ./gf3.sh")
