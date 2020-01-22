@@ -63,11 +63,11 @@ def create_topology():
     rapi1.connectDatacenter(dc1)
     rapi1.start()
 
-    Serv=net.addDocker('Serv', ip='10.0.0.200', dimage=image,dcmd="sh ./server.sh")
-    GI = net.addDocker('GI', ip='10.0.0.201', dimage=image,dcmd="sh ./gi.sh")
-    GF1 = net.addDocker('GF1', ip='10.0.0.202', dimage=image,dcmd="sh ./gf1.sh")
-    GF2 = net.addDocker('GF2', ip='10.0.0.203', dimage=image,dcmd="sh ./gf2.sh")
-    GF3 = net.addDocker('GF3', ip='10.0.0.204', dimage=image,dcmd="sh ./gf3.sh")
+    Serv=net.addDocker('Serv', ip='10.0.0.200', dimage=image)#,dcmd="sh ./server.sh")
+    GI = net.addDocker('GI', ip='10.0.0.201', dimage=image)#,dcmd="sh ./gi.sh")
+    GF1 = net.addDocker('GF1', ip='10.0.0.202', dimage=image)#,dcmd="sh ./gf1.sh")
+    GF2 = net.addDocker('GF2', ip='10.0.0.203', dimage=image)#,dcmd="sh ./gf2.sh")
+    GF3 = net.addDocker('GF3', ip='10.0.0.204', dimage=image)#,dcmd="sh ./gf3.sh")
 
     s1 = net.addSwitch('s1')
 
@@ -85,6 +85,11 @@ def create_topology():
     net.ping([GF3, GI])
     net.ping([Serv, GI])
 
+    Serv.cmd("sh ./server.sh")
+    GI.cmd("sh ./gi.sh")
+    GF1.cmd("sh ./gf1.sh")
+    GF2.cmd("sh ./gf2.sh")
+    GF3.cmd("sh ./gf3.sh")
     net.CLI()
 
     net.stop()
