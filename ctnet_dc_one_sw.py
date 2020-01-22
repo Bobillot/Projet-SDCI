@@ -58,7 +58,7 @@ def create_topology():
     api1.start()
     api1.connect_dc_network(net)'''
     # add the command line interface endpoint to the emulated DC (REST API)
-    rapi1 = RestApiEndpoint("127.0.0.1", 5002)
+    rapi1 = RestApiEndpoint("127.0.0.1", 5001)
     rapi1.connectDCNetwork(net)
     rapi1.connectDatacenter(dc1)
     rapi1.start()
