@@ -49,6 +49,10 @@ service docker restart
  ```
  vim-emu compute start -d dc1 -n monitor --image vnf:monitor --net '(id=net,ip=10.0.0.209/24)'
  ```
+ You can test that it has been deployed well :
+  ```
+curl http://172.17.0.7:8989/latency
+ ```
  6. Start the MAPE-K loop from a terminal C (you might need to install maven):
   ```
   apt install maven
