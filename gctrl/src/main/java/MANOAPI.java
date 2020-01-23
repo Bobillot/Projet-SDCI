@@ -109,6 +109,10 @@ class MANOAPI {
             e.printStackTrace();
             status = "KO";
         } 
+        catch (InterruptedException e) {
+		e.printStackTrace();
+            status = "KO";
+	    }
         return status;
     }
     
@@ -146,6 +150,10 @@ class MANOAPI {
             e.printStackTrace();
             status = "KO";
         } 
+                catch (InterruptedException e) {
+		e.printStackTrace();
+            status = "KO";
+	    }
         return status;
     }
 }
