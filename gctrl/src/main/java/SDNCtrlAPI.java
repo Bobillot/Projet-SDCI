@@ -48,7 +48,7 @@ class SDNCtrlAPI {
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
             conn.setRequestProperty("Content-Type", "application/json");
-            String input = "{\"dpid\": 1,\"cookie\": 0,\"table_id\": 0,\"priority\": 1111,\"flags\": 1,\"match\":{\"nw_src\": \"10.0.0.205\",\"dl_type\": 2048},\"actions\":[{\"type\": \"SET_FIELD\",\"field\": \"ipv4_src\",\"value\": \"10.0.0.201\"},{\"type\":\"OUTPUT\",\"port\":\"NORMAL\"}]}" ;
+            String input = "{\"dpid\": 1,\"cookie\": 0,\"table_id\": 0,\"priority\": 1111,\"flags\": 1,\"match\":{\"nw_src\": \"10.0.0.205\",\"nw_dst\":\"10.0.0.200\",\"dl_type\": 2048},\"actions\":[{\"type\": \"SET_FIELD\",\"field\": \"ipv4_src\",\"value\": \"10.0.0.201\"},{\"type\":\"OUTPUT\",\"port\":\"NORMAL\"}]}" ;
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
             os.flush();
