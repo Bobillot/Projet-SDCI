@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.net.HttpURLConnection;
+import java.lang.ProcessBuilder;
 /**
  * @author couedrao on 27/11/2019.
  * @project gctrl
@@ -26,7 +27,7 @@ class MANOAPI {
 
         return ip;
     }
-*/
+
     String deploy_lb() {
         
         String status = "OK";
@@ -71,5 +72,78 @@ class MANOAPI {
         
         return status;
     }
+*/
+    String deploy_gw() 
+    {
+        String status="OK";
+        ProcessBuilder processBuilder = new ProcessBuilder();
 
+        processBuilder.command("bash", "-c", "vim-emu compute start -d dc1 -n virtualgi --image vnf:gi --net '(id=net,ip=10.0.0.205/24)'");
+
+        try {
+
+            Process process = processBuilder.start();
+
+            StringBuilder output = new StringBuilder();
+
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output.append(line + "\n");
+            }
+
+            int exitVal = process.waitFor();
+            if (exitVal == 0) {
+                System.out.println("Success!");
+                System.out.println(output);
+                System.exit(0);
+            } else {
+                //abnormal...
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            status = "KO";
+        } 
+        return status;
+    }
+    
+        String deploy_lb() 
+    {
+        String status="OK";
+        ProcessBuilder processBuilder = new ProcessBuilder();
+
+        processBuilder.command("bash", "-c", "vim-emu compute start -d dc1 -n lb --image vnf:lb --net '(id=net,ip=10.0.0.206/24)'");
+
+        try {
+
+            Process process = processBuilder.start();
+
+            StringBuilder output = new StringBuilder();
+
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output.append(line + "\n");
+            }
+
+            int exitVal = process.waitFor();
+            if (exitVal == 0) {
+                System.out.println("Success!");
+                System.out.println(output);
+                System.exit(0);
+            } else {
+                //abnormal...
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            status = "KO";
+        } 
+        return status;
+    }
 }
