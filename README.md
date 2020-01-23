@@ -63,3 +63,7 @@ service docker restart
    ```
    
  You should see that the latency threshold of 10 ms ends up being surpassed, and that the MAPE-K loop executes plan B. 
+
+
+If at some point you end up doing a Ctrl-C in the terminal A (where containernet is running), you will need to clean the mininet environnement with 
+> mn -c
