@@ -4,6 +4,6 @@ It contains the work of Thomas Bobillot and Raphaël Perrochat, based on previou
 The following procedure describes how to execute the code :
 
 1. Pull this repo in the SDCI project dedicated virtual machine (to be able to use containernet, ryu and vim-emu) :
-  > git init
-  > git pull http://github.com/Bobillot/Projet-SDCI
+  >   git init
+  >   git pull http://github.com/Bobillot/Projet-SDCI
 2. aaa
