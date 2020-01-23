@@ -1,6 +1,8 @@
 The code in this repo is related to the 5SDBD - SDCI Project (year 2019-2020)
 It contains the work of Thomas Bobillot and Raphaël Perrochat, based on previous codes made by Clovis Ouedraogo and Samir Medjiah (LAAS & UPS).
 
+# Procedure to execute the code
+
 The following procedure describes how to execute the code :
 
 1. Pull this repo in the SDCI project dedicated virtual machine (to be able to use containernet, ryu and vim-emu) :
@@ -64,6 +66,18 @@ service docker restart
    
  You should see that the latency threshold of 10 ms ends up being surpassed, and that the MAPE-K loop executes plan B. 
 
+# Tips
 
 If at some point you end up doing a Ctrl-C in the terminal A (where containernet is running), you will need to clean the mininet environnement with 
-> mn -c
+```
+mn -c
+```
+
+To re-build a docker image, you will need to remove the previous one
+```
+docker rmi IMAGE:TAG 
+```
+On the next build, you might not want to use cache
+```
+docker build --no-cache -t IMAGE:TAG .
+```
